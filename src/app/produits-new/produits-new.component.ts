@@ -19,7 +19,7 @@ export class ProduitsNewComponent implements OnInit {
   mode:number;
   comboPays:Pays;
   constructor(public http:Http,public produitsService:ProduitsService,public paysService:PaysService,
-    public activatedRoute:ActivatedRoute) { }
+    public activatedRoute:ActivatedRoute,public router:Router) { }
   reference:number;
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class ProduitsNewComponent implements OnInit {
 
     if (isNaN(this.reference)) {
    this.mode=1;
-    
+   this.router.navigate(['produitsNew']);
    
     } else {
       this.mode=3;
@@ -59,5 +59,19 @@ export class ProduitsNewComponent implements OnInit {
       console.log(err);
     })
   }
+
+  modifProduit(){
+    this.produitsService.modifierProduit(this.produit)
+    .subscribe(data=>{
+      console.log(data);
+      alert("Mise à Jour effectué avec Succés");
+    },err=>{
+      console.log(err);
+      alert("Probléme de Mise à Jour");
+    })
+    this.mode=2;
+    this.router.navigate(['lstproduits']);
+}
+
 
 }
