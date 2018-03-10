@@ -40,7 +40,6 @@ export class ProduitsNewComponent implements OnInit {
       console.log(err);
     })
 
-    
     if (isNaN(this.reference)) {
    this.mode=1;
     
