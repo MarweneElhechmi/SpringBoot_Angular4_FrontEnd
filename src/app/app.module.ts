@@ -14,6 +14,7 @@ import { NouveauProduitValidationComponent } from './nouveau-produit-validation/
 import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { PaysNewComponent } from './pays-new/pays-new.component';
 import { PaysService } from '../services/pays.service';
+import { LstProduitMcComponent } from './lst-produit-mc/lst-produit-mc.component';
 
 
 const appRoutes : Routes=[
@@ -21,7 +22,9 @@ const appRoutes : Routes=[
   {path:'about',component:AboutComponent},
   {path:'produits',component:ProduitsComponent},
   {path:'produitsParMc',component:ProduitsMcComponent},
+  {path:'lstproduits',component:LstProduitMcComponent},
   {path:'produitsNew',component:ProduitsNewComponent},
+  {path:'produitsNew/:reference',component:ProduitsNewComponent},
   {path:'paysNew',component:PaysNewComponent},
   {path:'validationProduit',component:NouveauProduitValidationComponent},
   {path:'editProduit',component:EditProduitComponent},
@@ -38,7 +41,8 @@ const appRoutes : Routes=[
     ProduitsNewComponent,
     NouveauProduitValidationComponent,
     EditProduitComponent,
-    PaysNewComponent
+    PaysNewComponent,
+    LstProduitMcComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule,FormsModule

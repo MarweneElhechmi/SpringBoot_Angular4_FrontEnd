@@ -5,6 +5,8 @@ import { Http } from '@angular/http';
 import "rxjs/add/operator/map";
 import { ProduitsService } from '../../services/produits.service';
 import { PaysService } from '../../services/pays.service';
+import { NgIf } from '@angular/common/src/directives';
+import { RouterModule,Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produits-new',
@@ -14,9 +16,11 @@ import { PaysService } from '../../services/pays.service';
 export class ProduitsNewComponent implements OnInit {
 
   produit:Produit = new Produit();
-  mode:number=1;
+  mode:number;
   comboPays:Pays;
-  constructor(public http:Http,public produitsService:ProduitsService,public paysService:PaysService) { }
+  constructor(public http:Http,public produitsService:ProduitsService,public paysService:PaysService,
+    public activatedRoute:ActivatedRoute) { }
+  reference:number;
 
   ngOnInit() {
     
@@ -26,15 +30,21 @@ export class ProduitsNewComponent implements OnInit {
     },err=>{
       console.log(err);
     })
-  }
-
-  affichePays(){
-    this.paysService.getPays()
-    .subscribe(data=>{
-      this.comboPays = data;
-    },err=>{
+    
+    if (this.reference!=null) {
+   this.mode=3;
+   this.reference=+this.activatedRoute.snapshot.params['reference'];
+    this.produitsService.getProduitByReference(this.reference).
+    subscribe(data=>{this.produit=data;
+        },
+      
+        err=>{
       console.log(err);
     })
+   
+    } else {
+      this.mode=1;
+    }
   }
 
   ajoutProduit(){
