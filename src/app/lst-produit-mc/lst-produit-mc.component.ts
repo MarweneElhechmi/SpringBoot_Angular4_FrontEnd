@@ -55,7 +55,7 @@ export class LstProduitMcComponent implements OnInit {
   EditProduit(reference:number){
     
     this.router.navigate(['/produitsNew',reference]);
-    this.mode=3;
+  
   }
 
   onDeleteProduit(produit:Produit){
