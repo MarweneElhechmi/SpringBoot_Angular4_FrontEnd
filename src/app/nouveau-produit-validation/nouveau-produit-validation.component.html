@@ -11,6 +11,7 @@
             <input #designation="ngModel" class="form-control" 
             type="text" ngModel name="designation" required minlength="3" appForbiddenName="Mar"/>
             
+
             <div *ngIf="designation.invalid && (designation.dirty || designation.touched)"
      class="alert alert-danger">
             <div *ngIf="designation.errors.required">
