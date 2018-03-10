@@ -15,7 +15,7 @@ import { RouterModule,Router,ActivatedRoute } from '@angular/router';
 })
 export class ProduitsNewComponent implements OnInit {
 
-  produit:Produit = new Produit();
+  produit:Produit=new Produit();
   mode:number;
   comboPays:Pays;
   constructor(public http:Http,public produitsService:ProduitsService,public paysService:PaysService,
@@ -30,10 +30,8 @@ export class ProduitsNewComponent implements OnInit {
     },err=>{
       console.log(err);
     })
-    
-    if (this.reference!=null) {
-   this.mode=3;
-   this.reference=+this.activatedRoute.snapshot.params['reference'];
+
+    this.reference=+this.activatedRoute.snapshot.params['reference'];
     this.produitsService.getProduitByReference(this.reference).
     subscribe(data=>{this.produit=data;
         },
@@ -41,9 +39,14 @@ export class ProduitsNewComponent implements OnInit {
         err=>{
       console.log(err);
     })
+
+    
+    if (isNaN(this.reference)) {
+   this.mode=1;
+    
    
     } else {
-      this.mode=1;
+      this.mode=3;
     }
   }
 
