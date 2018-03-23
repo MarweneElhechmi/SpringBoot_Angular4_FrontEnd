@@ -1,3 +1,33 @@
+
+  <!-- ===================================Menu 1==================================================== -->
+
+  <main>
+      <div class="container">
+          <div class="row row-offcanvas row-offcanvas-right">
+              <div class="col-xs-12 col-sm-9">
+                  <ol class="breadcrumb">
+                      <li class="nav-item"><a class="nav-link" routerLink="about">A propos</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="produitsNew">Nouveau Produit</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="paysNew">Nouveau Pays</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="validationProduit">Validation Produit</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="editProduit">Edit Produit</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="produits">Liste des Produits</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="produitsParMC">Liste des Produits Par Mot Clé</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="lstproduits">Liste des Produits Avec Pays </a></li>
+                  </ol>
+                  <div class="jumbotron">
+                      <h1>Produit!</h1>
+                      <p>This is a list of Produit, click on each to see a list of courses for a given category.</p>
+                  </div>
+                  <router-outlet></router-outlet>
+              </div>
+              <router-outlet name="sidemenu"></router-outlet>
+          </div>
+      </div>
+  </main>
+  
+  <!-- ===================================Menu 2==================================================== -->
+
 <div class="container spacer">
 
   <button routerLink="/about" class="btn btn-primary">A propos </button>
@@ -16,10 +46,20 @@
 
   <button routerLink="/lstproduits" class="btn btn-primary"> Liste des Produits Avec Pays </button>
 
+  <!-- ===================================Menu 3==================================================== -->
+
+  <hr>
+  <nav> <a [routerLink]="['/about']">Accueil</a> | <a [routerLink]="['/produitsNew']">Nouveau Produit</a> |
+<a [routerLink]="['/paysNew']">Nouveau Pays</a> | <a [routerLink]="['/validationProduit']">Validation Produit</a> |
+ <a [routerLink]="['/editProduit']">Edit Produit</a> | <a [routerLink]="['/produits']">Liste des Produits</a> |
+ <a [routerLink]="['/produitsParMc']">Liste des Produits Par Mot Clé </a> | <a [routerLink]="['/lstproduits']">Liste des Produits Avec Pays</a>
+  </nav>
+  <hr>
+
 </div>
 
 <router-outlet>
-
+   
 
 </router-outlet>
 

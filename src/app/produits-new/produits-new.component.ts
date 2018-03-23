@@ -32,7 +32,14 @@ export class ProduitsNewComponent implements OnInit {
     })
 
     this.reference=+this.activatedRoute.snapshot.params['reference'];
-    this.produitsService.getProduitByReference(this.reference).
+    
+    if (isNaN(this.reference)) {
+   this.mode=1;
+   this.router.navigate(['produitsNew']);
+   
+    } else {
+      this.mode=3;
+      this.produitsService.getProduitByReference(this.reference).
     subscribe(data=>{this.produit=data;
         },
       
@@ -40,12 +47,6 @@ export class ProduitsNewComponent implements OnInit {
       console.log(err);
     })
 
-    if (isNaN(this.reference)) {
-   this.mode=1;
-   this.router.navigate(['produitsNew']);
-   
-    } else {
-      this.mode=3;
     }
   }
 
