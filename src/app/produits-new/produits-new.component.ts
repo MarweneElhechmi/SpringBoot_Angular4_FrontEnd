@@ -32,7 +32,7 @@ export class ProduitsNewComponent implements OnInit {
     })
 
     this.reference=+this.activatedRoute.snapshot.params['reference'];
-    
+  
     if (isNaN(this.reference)) {
    this.mode=1;
    this.router.navigate(['produitsNew']);
